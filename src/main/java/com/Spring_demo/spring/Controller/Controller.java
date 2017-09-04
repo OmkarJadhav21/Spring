@@ -2,8 +2,10 @@ package com.Spring_demo.spring.Controller;
 
 import com.Spring_demo.spring.Impl.Implementation;
 import com.Spring_demo.spring.Student.Student;
+import com.Spring_demo.spring.interfaced.Inter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,6 +24,10 @@ public class Controller {
         return st;
     }
 
+    @GetMapping(value = "/add/{a}/{b}")
+    Integer add(@PathVariable Integer a,@PathVariable Integer b){
+        return a+b;
+    }
 
 
 

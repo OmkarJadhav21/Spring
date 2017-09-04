@@ -14,4 +14,11 @@ public class Implementation implements Inter {
         st.setCity("Pune");
         return st;
     }
+
+    @Override
+    public Integer add(Integer a, Integer b) {
+        Integer c=a+b;
+        return c;
+
+    }
 }
