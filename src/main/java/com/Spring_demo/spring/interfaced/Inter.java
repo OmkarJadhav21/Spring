@@ -11,4 +11,7 @@ public interface Inter {
 
     List<Student> selectQry();
 
+    void saveToDB(Student st);
+
+
 }

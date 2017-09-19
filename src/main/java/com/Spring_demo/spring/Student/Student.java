@@ -1,25 +1,28 @@
 package com.Spring_demo.spring.Student;
 
 public class Student {
+
+    Integer id;
+
     @Override
     public String toString() {
-        return "Student" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", city='" + city + '\'';
-
+                ", city='" + city + '\'' +
+                '}';
     }
 
-    int id;
     String name;
     String city;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+
     }
 
     public String getName() {
@@ -37,6 +40,10 @@ public class Student {
     public void setCity(String city) {
         this.city = city;
     }
+
+
+
+
 
 
 }
