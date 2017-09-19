@@ -3,6 +3,7 @@ package com.Spring_demo.spring.Student;
 public class Student {
 
     Integer id;
+    String name;
 
     @Override
     public String toString() {
@@ -10,11 +11,13 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
+                ", path='" + path + '\'' +
                 '}';
     }
 
-    String name;
     String city;
+    String path;
+
 
     public Integer getId() {
         return id;
@@ -22,7 +25,6 @@ public class Student {
 
     public void setId(Integer id) {
         this.id = id;
-
     }
 
     public String getName() {
@@ -40,6 +42,15 @@ public class Student {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
 
 
 

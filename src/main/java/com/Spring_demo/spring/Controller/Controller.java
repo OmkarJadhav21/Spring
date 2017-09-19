@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,13 +60,27 @@ public class Controller {
    @PostMapping(value = "/saveToDatabase")
     String savedata(@RequestParam Integer id,
                     @RequestParam String name,
-                    @RequestParam String city){
+                    @RequestParam String city,
+                    @RequestParam MultipartFile file){
+
+        String imageName=file.getOriginalFilename();
+        File f=new File("/Users/Techteam/Desktop/images/"+imageName);
+        String st1=f.getAbsolutePath();
+       System.out.println(st1);
 
         Student s=new Student();
            s.setId(id);
            s.setName(name);
            s.setCity(city);
-        myimpl.saveToDB(s);
+           s.setPath(imageName);
+
+       try {
+           file.transferTo(f);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+
+       myimpl.saveToDB(s);
         return "Data Saved Successfully";
    }
 }

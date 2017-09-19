@@ -42,9 +42,9 @@ public class Implementation implements Inter {
 
     @Override
     public void saveToDB(Student st) {
-        String sql="insert into mytab values(?,?,?)";
+        String sql="insert into mytab values(?,?,?,?)";
        jdbcTemplate.update(sql,new Object[]{
-            st.getId(),st.getName(),st.getCity()
+            st.getId(),st.getName(),st.getCity(),st.getPath()
        });
     }
 
