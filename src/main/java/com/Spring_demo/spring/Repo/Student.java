@@ -1,9 +1,20 @@
-package com.Spring_demo.spring.Student;
+package com.Spring_demo.spring.Repo;
 
 public class Student {
 
     Integer id;
     String name;
+
+    String city;
+    String path;
+
+    public Department getDept() {
+        return dept;
+    }
+
+    public void setDept(Department dept) {
+        this.dept = dept;
+    }
 
     @Override
     public String toString() {
@@ -12,11 +23,11 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", path='" + path + '\'' +
+                ", dept=" + dept +
                 '}';
     }
 
-    String city;
-    String path;
+    Department dept;
 
 
     public Integer getId() {

@@ -1,8 +1,7 @@
 package com.Spring_demo.spring.Impl;
 
-import com.Spring_demo.spring.Student.Student;
-import com.Spring_demo.spring.interfaced.Inter;
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+import com.Spring_demo.spring.Repo.Student;
+import com.Spring_demo.spring.interfaced.Stud_Inter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class Implementation implements Inter {
+public class Stud_impl implements Stud_Inter {
 
     @Autowired
     JdbcTemplate jdbcTemplate;

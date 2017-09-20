@@ -1,8 +1,9 @@
 package com.Spring_demo.spring.Controller;
 
-import com.Spring_demo.spring.Impl.Implementation;
-import com.Spring_demo.spring.Student.Student;
-import com.Spring_demo.spring.interfaced.Inter;
+import com.Spring_demo.spring.Impl.Dept_impl;
+import com.Spring_demo.spring.Impl.Stud_impl;
+import com.Spring_demo.spring.Repo.Department;
+import com.Spring_demo.spring.Repo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,30 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class Controller {
+public class Stud_Controller {
+
 
     @Autowired
-    public void setMyimpl(Implementation myimpl) {
+    public void setMyimpl(Stud_impl myimpl) {
         this.myimpl = myimpl;
     }
 
     @Autowired
-    private Implementation myimpl;  //create setter for (Implementation) it will create (setMyimpl method )^^^
+    private Stud_impl myimpl;  //create setter for (Stud_impl) it will create (setMyimpl method )^^^
+
+    public void setDept_impl(Dept_impl dept_impl) {
+        this.dept_impl = dept_impl;
+    }
+
+    @Autowired
+    private Dept_impl dept_impl;
+
+
+
+
+
+
+
 
     @GetMapping(value = "/getdata")
     Student data() {
@@ -55,6 +71,7 @@ public class Controller {
        map.put("status", "success");
        map.put("result", l);
        return map;
+//use GET method of postman
    }
 
    @PostMapping(value = "/saveToDatabase")
@@ -82,5 +99,23 @@ public class Controller {
 
        myimpl.saveToDB(s);
         return "Data Saved Successfully";
+//POST->form-data->type Key and value
+   }
+
+   @PostMapping(value = "/deptAndStudData")
+    String getCombine(@RequestBody Student stud){
+       Department d=new Department();
+       d=stud.getDept();
+       dept_impl.save(d);
+
+       Student s1=new Student();
+       s1.setId(stud.getId());
+       s1.setName(stud.getName());
+       s1.setCity(stud.getCity());
+       s1.setPath(stud.getPath());
+       s1.setDept(stud.getDept());
+       myimpl.saveToDB(s1);
+       return  "Data saved and combined";
+//POST->raw JSON->{ "id:1","":"",..."dept":{"dept_name"}}
    }
 }
